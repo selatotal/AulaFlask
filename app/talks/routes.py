@@ -1,5 +1,6 @@
 from flask import render_template
 from . import talks
+from ..models import User
 
 @talks.route('/')
 def index():
@@ -7,6 +8,7 @@ def index():
 
 @talks.route('/user/<username>')
 def user(username):
-    return render_template('talks/user.html', username=username)
+    user = User.query.filter_by(username=username).first_or_404()
+    return render_template('talks/user.html', user=user)
 
 
