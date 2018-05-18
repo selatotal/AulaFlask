@@ -8,6 +8,7 @@ from app.models import User
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 manager = Manager(app)
 
+
 @manager.command
 def adduser(email, username, admin=False):
     """ Registra um novo usuário """
